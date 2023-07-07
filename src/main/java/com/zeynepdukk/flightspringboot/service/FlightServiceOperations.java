@@ -5,6 +5,9 @@ import com.zeynepdukk.flightspringboot.repository.FlightRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import  java.lang.module.ResolutionException;
 import java.util.List;
@@ -61,14 +64,20 @@ public class FlightServiceOperations implements FlightService{
 
     @Override
     public void deleteFlight(long flightId) {
-        Optional<Flight> flight1=this.flightRepository.findById(flightId);
-        if (flight1.isPresent()){
+        Optional<Flight> flight1 = this.flightRepository.findById(flightId);
+        if (flight1.isPresent()) {
             this.flightRepository.delete(flight1.get());
 
-        }
-        else {
+        } else {
             throw new FlightNotFoundException("Flight not found");
         }
     }
+    @Override
+    public Page<Flight> listAll(int pageNum){
+        int pageSize=2;
+        Pageable pageable = PageRequest.of(pageNum-1,pageSize);
+        return flightRepository.findAll(pageable);
+    }
+
 }
 
