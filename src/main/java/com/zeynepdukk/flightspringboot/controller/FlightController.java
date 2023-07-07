@@ -65,12 +65,6 @@ public class FlightController {
 
 
     }
-    /*
-    @RequestMapping("/")
-    public String viewHomePage(Model model){
-        return viewPage(model,1);
-    }
-    */
 
 
 }
