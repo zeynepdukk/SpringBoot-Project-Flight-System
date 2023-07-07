@@ -3,6 +3,7 @@ import jakarta.persistence.*;
 
 
 import java.math.BigDecimal;
+import java.time.LocalTime;
 
 @Entity
 @Table(name="flights")
@@ -19,6 +20,10 @@ public class Flight {
 
     @Column(name="capacity")
     private BigDecimal capacity;
+
+    @Column(name="createTime")
+    private long createTime;
+
 
 
     public long getId() {
@@ -52,5 +57,12 @@ public class Flight {
 
     public void setCapacity(BigDecimal capacity) {
         this.capacity = capacity;
+    }
+
+    public long getCreateTime() {
+        return createTime;
+    }
+    public void setCreateTime(long createTime) {
+        this.createTime = createTime;
     }
 }

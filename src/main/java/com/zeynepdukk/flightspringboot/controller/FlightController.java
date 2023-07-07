@@ -23,6 +23,11 @@ public class FlightController {
         return ResponseEntity.ok().body(flightService.getAllFlight());
     }
 
+    @GetMapping("/flights/sortByCreatedTime")
+    public ResponseEntity<List<Flight>> getAllFlightsByCreatedTime() {
+        return ResponseEntity.ok().body(flightService.getAllFlightsByCreatedTime());
+    }
+
     @GetMapping("/flights/{id}")
     public ResponseEntity<Flight> getFlightById(@PathVariable long id) {
         return ResponseEntity.ok().body(flightService.getFlightById(id));

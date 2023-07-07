@@ -7,6 +7,7 @@ public interface FlightService {
     Flight createFlight(Flight flight);
     Flight updateFlight(Flight flight);
     List<Flight> getAllFlight();
+    List<Flight> getAllFlightsByCreatedTime();
     Flight getFlightById(long flightId);
     void deleteFlight(long id);
     List<Flight> searchFlight(String query);

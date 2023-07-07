@@ -7,9 +7,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
+
+import static java.lang.System.currentTimeMillis;
 
 @Service
 @Qualifier("flightService")
@@ -24,6 +27,7 @@ public class FlightServiceOperations implements FlightService{
 
     @Override
     public Flight createFlight(Flight flight) {
+        flight.setCreateTime(currentTimeMillis());
         return flightRepository.save(flight);
     }
 
@@ -47,6 +51,11 @@ public class FlightServiceOperations implements FlightService{
     @Override
     public List<Flight> getAllFlight() {
         return this.flightRepository.findAll();
+    }
+
+    @Override
+    public List<Flight> getAllFlightsByCreatedTime() {
+        return this.flightRepository.findAll(Sort.by(Sort.Direction.DESC, "createTime"));
     }
 
     @Override
@@ -82,5 +91,6 @@ public class FlightServiceOperations implements FlightService{
         List<Flight> flights=flightRepository.searchFlight(query);
         return flights;
     }
+
 }
 
