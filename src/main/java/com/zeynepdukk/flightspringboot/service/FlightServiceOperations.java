@@ -3,13 +3,11 @@ import  com.zeynepdukk.flightspringboot.exception.FlightNotFoundException;
 import com.zeynepdukk.flightspringboot.model.Flight;
 import com.zeynepdukk.flightspringboot.repository.FlightRepository;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import  java.lang.module.ResolutionException;
 import java.util.List;
 import java.util.Optional;
 
@@ -79,5 +77,10 @@ public class FlightServiceOperations implements FlightService{
         return flightRepository.findAll(pageable);
     }
 
+    @Override
+    public List<Flight> searchFlight(String query){
+        List<Flight> flights=flightRepository.searchFlight(query);
+        return flights;
+    }
 }
 

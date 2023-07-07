@@ -1,6 +1,6 @@
 package com.zeynepdukk.flightspringboot.model;
 import jakarta.persistence.*;
-import com.zeynepdukk.flightspringboot.service.FlightService;
+
 
 import java.math.BigDecimal;
 
@@ -19,6 +19,7 @@ public class Flight {
 
     @Column(name="capacity")
     private BigDecimal capacity;
+
 
     public long getId() {
         return id;
