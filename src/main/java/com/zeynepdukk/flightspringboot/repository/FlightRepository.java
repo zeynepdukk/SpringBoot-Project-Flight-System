@@ -1,10 +1,11 @@
 package com.zeynepdukk.flightspringboot.repository;
 
+import com.zeynepdukk.flightspringboot.model.Flight;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.zeynepdukk.flightspringboot.model.Flight;
 import org.springframework.data.jpa.repository.Query;
+
 import java.util.List;
 
 public interface FlightRepository extends JpaRepository<Flight,Long> {

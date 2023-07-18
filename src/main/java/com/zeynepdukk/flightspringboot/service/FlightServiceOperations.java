@@ -1,14 +1,16 @@
 package com.zeynepdukk.flightspringboot.service;
-import  com.zeynepdukk.flightspringboot.exception.FlightNotFoundException;
+
+import com.zeynepdukk.flightspringboot.exception.FlightNotFoundException;
 import com.zeynepdukk.flightspringboot.model.Flight;
 import com.zeynepdukk.flightspringboot.repository.FlightRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -92,5 +94,16 @@ public class FlightServiceOperations implements FlightService{
         return flights;
     }
 
-}
+    @Override
+    public Flight saveFlight(Flight flight){
+        Optional<Flight> savedFlight=this.flightRepository.findById(flight.getId());
+        if(savedFlight.isPresent()){
+            throw new FlightNotFoundException("Flight already exists");
+
+        }
+        return flightRepository.save(flight);
+        }
+    }
+
+
 

@@ -13,4 +13,6 @@ public interface FlightService {
     List<Flight> searchFlight(String query);
     Page<Flight> listAll(int pageNum); //by pagination
 
+    Flight saveFlight(Flight flight);
+
 }
