@@ -34,8 +34,8 @@ public class FlightServiceOperations implements FlightService{
     }
 
     @Override
-    public Flight updateFlight(Flight flight) {
-        Optional<Flight> flight1=this.flightRepository.findById((flight.getId()));
+    public Flight updateFlight(long flightId,Flight flight) {
+        Optional<Flight> flight1=this.flightRepository.findById((flightId));
         if(flight1.isPresent()){
             Flight flightUpdate= flight1.get();;
             flightUpdate.setId(flight.getId());
@@ -103,6 +103,15 @@ public class FlightServiceOperations implements FlightService{
         }
         return flightRepository.save(flight);
         }
+
+    @Override
+    public Page<Flight> viewPage(int pageNum){
+        int pageSize=2;
+        Pageable pageable = PageRequest.of(pageNum-1,pageSize);
+        return flightRepository.findAll(pageable);
+
+    }
+
     }
 
 

@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 
@@ -30,7 +31,15 @@ public class FlightController {
 
     @GetMapping("/flights/{id}")
     public ResponseEntity<Flight> getFlightById(@PathVariable long id) {
-        return ResponseEntity.ok().body(flightService.getFlightById(id));
+        //return ResponseEntity.ok().body(flightService.getFlightById(id));
+        Optional<Flight> flight1= Optional.ofNullable(flightService.getFlightById(id));
+        if(flight1.isPresent()){
+            return new ResponseEntity<>(flight1.get(),HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
     }
 
     @PostMapping("/flights")
@@ -39,15 +48,15 @@ public class FlightController {
     }
 
     @PutMapping("/flights/{id}")
-    public ResponseEntity<Flight> updateFlight(@PathVariable long id, Flight flight) {
-        return ResponseEntity.ok().body(this.flightService.updateFlight(flight.setId(id)));
+    public ResponseEntity<Flight> updateFlight(@PathVariable long flightId, Flight flight) {
+        return ResponseEntity.ok().body(this.flightService.updateFlight(flightId,flight));
 
     }
 
     @DeleteMapping("/flights/{id}")
-    public HttpStatus deleteProduct(@PathVariable long id) {
+    public ResponseEntity<HttpStatus> deleteFlight(@PathVariable long id) {
         this.flightService.deleteFlight(id);
-        return HttpStatus.OK;
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @GetMapping("/page/{pageNum}")

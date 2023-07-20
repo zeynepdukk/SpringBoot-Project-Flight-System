@@ -22,12 +22,12 @@ public class Flight {
     @Column(name="createTime")
     private long createTime;
 
-    public Flight(String current_city,String destination_city,BigDecimal capacity,long createTime){
+    /*public Flight(String current_city,String destination_city,BigDecimal capacity,long createTime){
         this.current_city=current_city;
         this.destination_city=destination_city;
         this.capacity=capacity;
     }
-
+*/
 
 
     public long getId() {
