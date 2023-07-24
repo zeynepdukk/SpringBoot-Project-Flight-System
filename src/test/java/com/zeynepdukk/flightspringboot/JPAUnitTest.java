@@ -87,45 +87,6 @@ public class JPAUnitTest {
 
         @Test
         public void shouldReturnFlight(){
-            /*
-            Flight flight1 = new Flight();
-            flight1.setDestination_city("istanbul");
-            flight1.setCurrent_city("lisbon");
-            flight1.setCapacity(BigDecimal.valueOf(123L));
-            flightService.saveFlight(flight1);
-            entityManager.persist(flight1);
-
-            Flight flight2 = new Flight();
-            flight2.setDestination_city("istanbul");
-            flight2.setCurrent_city("lisbon");
-            flight2.setCapacity(BigDecimal.valueOf(123L));
-            flightService.saveFlight(flight2);
-            entityManager.persist(flight2);
-
-            List<Flight> flightList1 =new ArrayList<>();
-            flightList1.add(flight1);
-
-            List<Flight> flightList =(List<Flight>) flightService.getFlightById(flight1.getId());
-            flightList.add(flight1);
-
-            assertThat(flightList).isEqualTo(flightList1);
-
-            /*
-            flightList1.add(flight2);
-
-            //List<Flight> flightList =new ArrayList<>();
-           // flightList.add(FlightService.getFlightById(flight2.getId()));
-
-
-
-            Flight flight=flightService.getFlightById(flight2.getId());
-            assertThat(flight.getId()).isEqualTo(flight2.getId());
-
-
-
- */
-           // Flight flight=flightService.getFlightById(1L);
-           // Assertions.assertThat(flight.getId()).isEqualTo(1L);
             long id=0L ;
             Flight flight1 = new Flight();
             flight1.setDestination_city("istanbul");
