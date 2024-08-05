@@ -1,6 +1,7 @@
-# Flight Management System : Springboot Application For Starters
+# Flight Management System : Springboot Application 
 ## Overview
-FlightSpringBoot is a Spring Boot application designed to manage flight information. The application provides a RESTful API to create, update, retrieve, and delete flight records. It also supports pagination, sorting, and searching functionalities. YOU can fing my internships book in files.
+FlightSpringBoot is a Spring Boot application designed to manage flight information. The application provides a RESTful API to create, update, retrieve, and delete flight records. It also supports pagination, sorting, and searching functionalities. 
+You can find my detailed internship book in files containing restful API's, AWS and other technologies.
 ## Features
 Create, update, and delete flight records
 Retrieve all flight records or a specific flight by ID
